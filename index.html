@@ -1,0 +1,149 @@
+Resizer\index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Photo Resizer</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="background-animation">
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+    </div>
+
+    <div class="container glass-effect">
+        <header>
+            <h1><i class="fas fa-image"></i> Advanced Photo Resizer</h1>
+            <p class="subtitle">Simple and powerful tool to resize your images</p>
+        </header>
+        
+        <div class="steps-container">
+            <div class="step active">
+                <span class="step-number">1</span>
+                <span class="step-text">Upload</span>
+            </div>
+            <div class="step-line"></div>
+            <div class="step">
+                <span class="step-number">2</span>
+                <span class="step-text">Adjust</span>
+            </div>
+            <div class="step-line"></div>
+            <div class="step">
+                <span class="step-number">3</span>
+                <span class="step-text">Download</span>
+            </div>
+        </div>
+
+        <div class="upload-section">
+            <div class="upload-area glass-effect" id="dropZone">
+                <i class="fas fa-cloud-upload-alt"></i>
+                <p class="upload-text">Drag & Drop your image here</p>
+                <p class="upload-hint">Supports: JPG, PNG, WebP</p>
+                <p class="upload-size">Maximum file size: 10MB</p>
+                <input type="file" id="imageInput" accept="image/*" hidden>
+                <button class="browse-btn">
+                    <i class="fas fa-folder-open"></i> Browse Files
+                </button>
+            </div>
+
+            <div class="settings-panel glass-effect">
+                <h2 class="panel-title"><i class="fas fa-sliders-h"></i> Image Settings</h2>
+                
+                <div class="size-inputs">
+                    <div class="input-group">
+                        <label for="width">
+                            <i class="fas fa-arrows-alt-h"></i> Width (px):
+                            <span class="tooltip">Set the width in pixels</span>
+                        </label>
+                        <input type="number" id="width" min="1" placeholder="Enter width">
+                    </div>
+                    <div class="input-group">
+                        <label for="height">
+                            <i class="fas fa-arrows-alt-v"></i> Height (px):
+                            <span class="tooltip">Set the height in pixels</span>
+                        </label>
+                        <input type="number" id="height" min="1" placeholder="Enter height">
+                    </div>
+                </div>
+
+                <div class="options">
+                    <label class="checkbox-container">
+                        <input type="checkbox" id="maintainAspectRatio" checked>
+                        <span class="checkmark"></span>
+                        <i class="fas fa-link"></i> Maintain aspect ratio
+                        <span class="tooltip">Keep the original image proportions</span>
+                    </label>
+
+                    <div class="quality-slider">
+                        <label>
+                            <i class="fas fa-compress-alt"></i> Quality:
+                            <span class="tooltip">Higher quality means larger file size</span>
+                        </label>
+                        <div class="slider-container">
+                            <input type="range" id="quality" min="0" max="100" value="90">
+                            <span id="qualityValue">90%</span>
+                        </div>
+                    </div>
+
+                    <div class="format-select">
+                        <label>
+                            <i class="fas fa-file-image"></i> Format:
+                            <span class="tooltip">Choose the output format</span>
+                        </label>
+                        <select id="formatSelect">
+                            <option value="image/jpeg">JPEG - Best for photos</option>
+                            <option value="image/png">PNG - Best for transparency</option>
+                            <option value="image/webp">WebP - Best compression</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="action-buttons">
+                    <button id="resizeBtn" class="primary-btn">
+                        <i class="fas fa-crop-alt"></i> Resize Image
+                    </button>
+                    <button id="downloadBtn" class="secondary-btn" disabled>
+                        <i class="fas fa-download"></i> Download
+                    </button>
+                    <button id="resetBtn" class="tertiary-btn">
+                        <i class="fas fa-undo"></i> Reset
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="preview-section">
+            <div class="preview-card glass-effect">
+                <h3><i class="fas fa-image"></i> Original Image</h3>
+                <div class="image-container">
+                    <img id="originalPreview">
+                    <div class="image-info" id="originalInfo">
+                        <span class="dimensions"></span>
+                        <span class="size"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="preview-card glass-effect">
+                <h3><i class="fas fa-crop"></i> Resized Image</h3>
+                <div class="image-container">
+                    <img id="resizedPreview">
+                    <div class="image-info" id="resizedInfo">
+                        <span class="dimensions"></span>
+                        <span class="size"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="app-footer">
+            <p class="help-text">Need help? Hover over any option to see more information</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
